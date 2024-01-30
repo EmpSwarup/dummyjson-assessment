@@ -1,6 +1,6 @@
 # Under Development
 
-Assessment project using dummyjson for Grepsr
+Assessment project using dummyJSON for Grepsr
 
 ## Getting Started
 
