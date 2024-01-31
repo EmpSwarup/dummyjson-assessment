@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getProduct } from "@/utils/productapi";
 import "./style.css";
+import ImageCarousel from "@/components/ImageCarousel";
 
 const ProductDetailPage = () => {
   const [product, setProduct] = useState(null);
@@ -12,7 +13,6 @@ const ProductDetailPage = () => {
     if (productId) {
       getProduct(productId)
         .then((response) => {
-          console.log("Product data:", response);
           setProduct(response);
         })
         .catch((error) => {
@@ -38,11 +38,7 @@ const ProductDetailPage = () => {
         <div className="flex flex-col md:flex-row -mx-4">
           <div className="md:flex-1 px-4">
             <div className="h-[460px] rounded-lg overflow-hidden mb-4">
-              <img
-                src={product.thumbnail}
-                alt={product.title}
-                className="w-full h-full object-cover"
-              />
+              <ImageCarousel product={product} />
             </div>
           </div>
           <div className="md:flex-1 px-4">
