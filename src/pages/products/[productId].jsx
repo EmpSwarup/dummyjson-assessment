@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getProduct } from "@/utils/productapi";
+import "./style.css";
 
 const ProductDetailPage = () => {
   const [product, setProduct] = useState(null);
@@ -21,7 +22,14 @@ const ProductDetailPage = () => {
   }, [productId]);
 
   if (!product) {
-    return <div className="min-h-screen">Loading...</div>;
+    return (
+      <div className="min-h-screen">
+        <div class="loader">
+          <span class="loader-text">loading</span>
+          <span class="load"></span>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -38,9 +46,7 @@ const ProductDetailPage = () => {
             </div>
           </div>
           <div class="md:flex-1 px-4">
-            <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">
-              {product.title}
-            </h2>
+            <h2 class="text-2xl font-bold text-black mb-2">{product.title}</h2>
             <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
               {product.description}
             </p>
