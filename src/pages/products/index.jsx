@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getProducts } from "@/utils/productapi";
+import Link from "next/link";
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 8;
 
   useEffect(() => {
     getProducts()
@@ -29,8 +30,8 @@ const ProductsPage = () => {
             key={product.id}
             className="relative flex flex-col w-full max-w-sm overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md"
           >
-            <a
-              href="#"
+            <Link
+              href={`/products/${product.id}`}
               className="relative flex-shrink-0 h-60 overflow-hidden rounded-xl"
             >
               <img
@@ -41,13 +42,13 @@ const ProductsPage = () => {
               <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">
                 {product.discountPercentage} % OFF
               </span>
-            </a>
+            </Link>
             <div className="mt-4 px-5 pb-5">
-              <a href="#">
+              <Link href={`/products/${product.id}`}>
                 <h5 className="text-xl tracking-tight text-slate-900">
                   {product.title}
                 </h5>
-              </a>
+              </Link>
               <div className="mt-2 mb-5 flex items-center justify-between">
                 <p>
                   <span className="text-3xl font-bold text-slate-900">
@@ -67,12 +68,12 @@ const ProductsPage = () => {
                   </span>
                 </div>
               </div>
-              <a
-                href="#"
+              <Link
+                href={`/products/${product.id}`}
                 className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
               >
                 View
-              </a>
+              </Link>
             </div>
           </div>
         ))}
