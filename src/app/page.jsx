@@ -8,7 +8,7 @@ const hometitle = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center mb-60">
+    <main className="min-h-screen flex flex-col items-center justify-center pt-0">
       <h1 className="text-3xl font-bold">Welcome!</h1>
       <h2>View all the products and categories in our site!</h2>
       <div className="container flex items-center justify-center mt-8 gap-4">
