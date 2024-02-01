@@ -1,3 +1,5 @@
+// Get all the products
+
 export const getProducts = async () => {
   try {
     const response = await fetch("https://dummyjson.com/products");
@@ -11,6 +13,8 @@ export const getProducts = async () => {
     throw error;
   }
 };
+
+// Get a single product
 
 export const getProduct = async (productId) => {
   try {

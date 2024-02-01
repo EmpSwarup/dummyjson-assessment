@@ -1,3 +1,5 @@
+// Get all categories
+
 export const getCategories = async () => {
   try {
     const response = await fetch("https://dummyjson.com/products/categories");
@@ -11,6 +13,8 @@ export const getCategories = async () => {
     throw error;
   }
 };
+
+// Get all products from a category
 
 export const getProductsByCategory = async (category) => {
   try {

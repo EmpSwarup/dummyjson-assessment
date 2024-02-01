@@ -4,6 +4,7 @@ import { getProduct } from "@/utils/productapi";
 import ImageCarousel from "@/components/ImageCarousel";
 import Loader from "@/components/loader/Loader";
 import Head from "next/head";
+import Link from "next/link";
 
 const ProductDetailPage = () => {
   const [product, setProduct] = useState(null);
@@ -21,6 +22,10 @@ const ProductDetailPage = () => {
         });
     }
   }, [productId]);
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   if (!product) {
     return <Loader />;
@@ -51,7 +56,11 @@ const ProductDetailPage = () => {
               </div>
               <div className="mb-4">
                 <span className="font-bold text-gray-800">Category:</span>
-                <span className="text-gray-700 ml-2">{product.category}</span>
+                <Link href={`/categories/${product.category}`}>
+                  <span className="text-gray-700 ml-2">
+                    {capitalizeFirstLetter(product.category)}
+                  </span>
+                </Link>
               </div>
               <div className="mr-8 mb-4">
                 <span className="font-bold text-gray-800">Availability:</span>
@@ -71,8 +80,11 @@ const ProductDetailPage = () => {
                           (product.price * product.discountPercentage) / 100
                       )}
                     </span>
-                    <span className="text-sm text-gray-500 line-through ml-2">
+                    <span className="font-bold text-gray-500 line-through ml-2">
                       ${product.price}
+                    </span>
+                    <span className="text-sm text-gray-500 ml-2">
+                      {product.discountPercentage} % OFF!!
                     </span>
                   </p>
                 </div>

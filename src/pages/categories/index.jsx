@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { getCategories } from "@/utils/categoryapi";
+import Head from "next/head";
+import Loader from "@/components/loader/Loader";
+import CategoryCard from "@/components/cards/Categorycard";
 
 const CategoriesPage = () => {
   const [categories, setCategories] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
   const categoriesPerPage = 12;
 
   useEffect(() => {
-    getCategories().then(setCategories);
+    setIsLoading(true);
+    getCategories().then((categories) => {
+      setCategories(categories);
+      setIsLoading(false);
+    });
   }, []);
-
-  const formatCategoryName = (name) => {
-    return name
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  };
 
   const indexOfLastCategory = currentPage * categoriesPerPage;
   const indexOfFirstCategory = indexOfLastCategory - categoriesPerPage;
@@ -26,52 +27,42 @@ const CategoriesPage = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
-    <div className="container min-h-[90vh] mx-auto px-4 py-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {currentCategories.map((category, index) => (
-          <div
-            key={index}
-            className="max-w-sm rounded overflow-hidden shadow-lg bg-white"
-          >
-            <div className="px-6 py-4">
-              <div className="font-bold text-xl mb-2">
-                {formatCategoryName(category)}
-              </div>
-              <p className="text-gray-700 text-base">
-                Explore products from the {category} category.
-              </p>
-            </div>
-            <div className="px-6 pt-4 pb-2">
-              <a
-                href={`/categories/${category}`}
-                className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+    <>
+      <Head>
+        <title>All Categories</title>
+      </Head>
+      <main className="min-h-screen flex flex-col items-center my-3">
+        <h1 className="text-3xl font-bold my-6">All Categories</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-5">
+          {currentCategories.map((category, index) => (
+            <CategoryCard key={index} category={category} />
+          ))}
+        </div>
+        <div className="flex justify-center mt-8">
+          {Array.from(
+            { length: Math.ceil(categories.length / categoriesPerPage) },
+            (_, i) => (
+              <button
+                key={i}
+                onClick={() => paginate(i + 1)}
+                className={`mx-1 px-3 py-1 rounded ${
+                  currentPage === i + 1
+                    ? "bg-blue-500 text-white"
+                    : "bg-white text-black"
+                }`}
               >
-                View Products
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="flex justify-center mt-8">
-        {Array.from(
-          { length: Math.ceil(categories.length / categoriesPerPage) },
-          (_, i) => (
-            <button
-              key={i}
-              onClick={() => paginate(i + 1)}
-              className={`mx-1 px-3 py-1 rounded ${
-                currentPage === i + 1
-                  ? "bg-blue-500 text-white"
-                  : "bg-white text-black"
-              }`}
-            >
-              {i + 1}
-            </button>
-          )
-        )}
-      </div>
-    </div>
+                {i + 1}
+              </button>
+            )
+          )}
+        </div>
+      </main>
+    </>
   );
 };
 
