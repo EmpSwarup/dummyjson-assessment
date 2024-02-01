@@ -6,6 +6,7 @@ const Homecard = ({ hometitle }) => {
   const categoryURLs = {
     Products: "/products",
     Categories: "/categories",
+    Piechart: "/categorydistribution",
   };
 
   return (
