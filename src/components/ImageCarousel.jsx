@@ -23,13 +23,13 @@ const ImageCarousel = ({ product }) => {
         className="w-full h-full object-cover"
       />
       <button
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 hover:bg-amber-200 bg-transparent p-2"
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 hover:bg-amber-200 bg-amber-100 p-2"
         onClick={previousImage}
       >
         Previous
       </button>
       <button
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 hover:bg-amber-200 bg-transparent p-2"
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 hover:bg-amber-200 bg-amber-100 p-2"
         onClick={nextImage}
       >
         Next
