@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Homecard from "@/components/Homecard";
+import Homecard from "@/components/cards/Homecard";
 import Head from "next/head";
 
 const hometitle = [
