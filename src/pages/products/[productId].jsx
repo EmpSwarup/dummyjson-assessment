@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getProduct } from "@/utils/productapi";
-import "./style.css";
 import ImageCarousel from "@/components/ImageCarousel";
+import Loader from "@/components/loader/Loader";
 
 const ProductDetailPage = () => {
   const [product, setProduct] = useState(null);
@@ -22,14 +22,7 @@ const ProductDetailPage = () => {
   }, [productId]);
 
   if (!product) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="loader">
-          <span className="loader-text">loading</span>
-          <span className="load"></span>
-        </div>
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
@@ -57,8 +50,9 @@ const ProductDetailPage = () => {
             </div>
             <div className="mr-8 mb-4">
               <span className="font-bold text-gray-800">Availability:</span>
+              <span className="text-emerald-500 ml-2">{product.stock}</span>
               <span className="text-gray-700 ml-2">
-                {product.stock > 0 ? "In Stock" : "Out of Stock"}
+                ({product.stock > 0 ? "In Stock" : "Out of Stock"})
               </span>
             </div>
             <div className="flex flex-wrap items-center mb-4">
