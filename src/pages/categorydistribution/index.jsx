@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PieChart from "@/components/PieChart";
+import PieChart from "@/components/Piechart";
 import Head from "next/head";
 import { getCategoryDistributionData } from "@/utils/categoryapi";
 
