@@ -1,6 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
+const formatLabelName = (name) => {
+  return name
+    .split("-") // Split the name by dashes
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
+    .join(" "); // Rejoin the words with spaces
+};
+
 const PieChart = ({ data }) => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
@@ -15,7 +22,7 @@ const PieChart = ({ data }) => {
       chartInstance.current = new Chart(myChartRef, {
         type: "pie",
         data: {
-          labels: data.map((item) => item.name),
+          labels: data.map((item) => formatLabelName(item.name)),
           datasets: [
             {
               data: data.map((item) => item.value),
@@ -39,7 +46,7 @@ const PieChart = ({ data }) => {
                 "rgb(255, 128, 128)",
                 "rgb(128, 255, 128)",
                 "rgb(128, 128, 255)",
-                "rgb(255, 255, 255)",
+                "rgb(255, 155, 255)",
               ],
             },
           ],
@@ -55,7 +62,7 @@ const PieChart = ({ data }) => {
 
   return (
     <div>
-      <canvas ref={chartRef} id="myPieChart" width="400" height="400" />
+      <canvas ref={chartRef} id="myPieChart" width="500" height="600" />
     </div>
   );
 };

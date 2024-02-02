@@ -1,7 +1,7 @@
 // Get all the products
 export const getProducts = async () => {
   try {
-    const response = await fetch("https://dummyjson.com/products");
+    const response = await fetch("https://dummyjson.com/products?limit=0");
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }

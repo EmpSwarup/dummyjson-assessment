@@ -8,7 +8,7 @@ const CategoryDistributionPage = () => {
 
   useEffect(() => {
     getCategoryDistributionData().then((data) => {
-      console.log("Fetched Data:", data); // Check the fetched data
+      console.log("Fetched Data:", data);
       setCategoryData(data);
     });
   }, []);
@@ -18,8 +18,8 @@ const CategoryDistributionPage = () => {
       <Head>
         <title>Product distribution</title>
       </Head>
-      <main className="min-h-[85vh] flex flex-col items-center justify-center">
-        <h1>Category Distribution</h1>
+      <main className="min-h-[85vh] flex flex-col items-center justify-center my-5">
+        <h1 className="text-3xl font-bold my-6">All Categories</h1>
         <div className="flex items-center justify-center">
           <PieChart data={categoryData} />
         </div>
