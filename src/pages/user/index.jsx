@@ -64,11 +64,11 @@ const User = () => {
         <title>User Profile</title>
       </Head>
       <div className="min-h-[85vh] flex items-center justify-center bg-gray-100">
-        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md flex flex-col items-center">
           <h2 className="text-2xl font-semibold mb-4 text-center">
             User Profile
           </h2>
-          <div className="space-y-4">
+          <div className="space-y-4 text-center">
             {user.image && (
               <img
                 src={user.image}
@@ -77,13 +77,13 @@ const User = () => {
               />
             )}
             <div className="text-sm">
-              <p className="font-bold text-gray-900">
+              <p className="font-bold text-gray-900 mx-2">
                 Username: <span className="font-normal">{user.username}</span>
               </p>
-              <p className="font-bold text-gray-900">
+              <p className="font-bold text-gray-900 mx-2">
                 Email: <span className="font-normal">{user.email}</span>
               </p>
-              <p className="font-bold text-gray-900">
+              <p className="font-bold text-gray-900 mx-2">
                 Password:{" "}
                 <span className="font-normal">
                   {showPassword
@@ -98,7 +98,7 @@ const User = () => {
             >
               {showPassword ? "Hide" : "Show"} Password
             </button>
-            <div className="pt-4 flex justify-center">
+            <div className="pt-4">
               <button
                 onClick={handleSignOut}
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

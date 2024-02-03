@@ -45,7 +45,7 @@ const Login = () => {
                 htmlFor="username"
                 className="block text-sm font-medium text-gray-600"
               >
-                Username
+                Username ( Try atuny0 )
               </label>
               <input
                 type="text"
@@ -62,7 +62,7 @@ const Login = () => {
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-600"
               >
-                Password
+                Password ( Try 9uQFF1Lh )
               </label>
               <input
                 type="password"
@@ -82,6 +82,13 @@ const Login = () => {
                 Login
               </button>
             </div>
+            <a
+              href="https://dummyjson.com/users"
+              target="_blank"
+              className="text-blue-500 underline text-center block"
+            >
+              Login using username and password from this doc
+            </a>
             {error && <p className="text-red-500 text-center">{error}</p>}
           </form>
         </div>
