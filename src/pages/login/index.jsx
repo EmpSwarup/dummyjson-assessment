@@ -10,10 +10,8 @@ const Login = () => {
   const router = useRouter();
 
   useEffect(() => {
-    console.log("Checking isAuthenticated on page load:", isAuthenticated());
     if (isAuthenticated()) {
-      console.log("Already authenticated, redirecting to /user");
-      router.push("/user");
+      router.push("/");
     }
   }, [router]);
 
@@ -22,18 +20,13 @@ const Login = () => {
 
     try {
       const data = await loginUser(username, password);
-      console.log("Login successful", data);
 
-      // Check again if authenticated before redirecting
       if (isAuthenticated()) {
-        console.log("Authentication confirmed, redirecting to homepage");
         router.push("/");
       } else {
-        console.error("Authentication failed post-login");
         setError("Authentication failed. Please try again.");
       }
     } catch (error) {
-      console.error("Login failed", error);
       setError("Login failed. Please check your credentials.");
     }
   };

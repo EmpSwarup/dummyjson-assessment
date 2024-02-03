@@ -11,7 +11,7 @@ export default function Home() {
     {
       id: 3,
       name: "Piechart",
-      description: "Pie chart of product count per category",
+      description: "Piechart of product count per category",
     },
   ];
 
@@ -20,7 +20,7 @@ export default function Home() {
       <Head>
         <title>Homepage</title>
       </Head>
-      <main className="min-h-[90vh] flex flex-col items-center justify-center pt-0">
+      <main className="min-h-[85vh] flex flex-col items-center justify-center pt-0">
         <h1 className="text-3xl font-bold">Welcome!</h1>
         <h2>View all the products and categories in our site!</h2>
         <div className="container flex items-center justify-center my-8 gap-4">

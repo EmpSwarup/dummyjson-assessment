@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getCurrentUser, logoutUser } from "../../utils/auth"; // Import logoutUser
+import { getCurrentUser, logoutUser } from "../../utils/auth";
 import { useRouter } from "next/router";
-import Loader from "@/components/loader/Loader";
+import Loader from "@/components/loader/Loader"; // Ensure correct path
 import Head from "next/head";
 
 const User = () => {
@@ -16,23 +16,28 @@ const User = () => {
       setLoading(true);
       try {
         const userData = await getCurrentUser();
-        setUser(userData);
-        setError("");
+        if (!userData) {
+          // Redirect to login if user data is not retrieved
+          router.push("/login");
+        } else {
+          setUser(userData);
+          setError("");
+        }
       } catch (err) {
         console.error(err);
         setError("Failed to fetch user details");
+        // Potentially redirect to a login or error page here
       } finally {
         setLoading(false);
       }
     };
 
     fetchUser();
-  }, []);
+  }, [router]);
 
   const handleSignOut = async () => {
     try {
       await logoutUser();
-      // Redirect to login page after sign out
       router.push("/login");
     } catch (err) {
       console.error(err);
@@ -44,66 +49,64 @@ const User = () => {
     setShowPassword((prev) => !prev);
   };
 
-  if (loading)
-    return (
-      <div>
-        <Loader />
-      </div>
-    );
-  if (error) return <div>Error: {error}</div>;
-  if (!user) {
-    // Redirect to login page if not logged in
-    router.push("/login");
-    return null;
+  if (loading) {
+    return <Loader />;
   }
 
+  if (error) {
+    return <div className="text-center">Error: {error}</div>;
+  }
+
+  // User data check and rendering user details
   return (
     <>
       <Head>
         <title>User Profile</title>
       </Head>
       <div className="min-h-[85vh] flex items-center justify-center bg-gray-100">
-        <div className="bg-white p-8 rounded-md shadow-md w-96">
-          {/* Center the heading */}
+        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
           <h2 className="text-2xl font-semibold mb-4 text-center">
             User Profile
           </h2>
-          <div className="bg-gray-200 rounded-md p-4 flex items-center flex-col space-y-4">
+          <div className="space-y-4">
             {user.image && (
               <img
                 src={user.image}
                 alt="User Avatar"
-                className="rounded-full"
-                style={{ width: "100px", height: "100px" }}
+                className="mx-auto h-24 w-24 rounded-full object-cover"
               />
             )}
-            <p className="mb-2">
-              <span className="font-bold">Username:</span> {user.username}
-            </p>
-            <p className="mb-2">
-              <span className="font-bold">Email:</span> {user.email}
-            </p>
-            <p className="mb-2">
-              <span className="font-bold">Password:</span>{" "}
-              {showPassword ? user.password : "*".repeat(user.password.length)}
-            </p>
+            <div className="text-sm">
+              <p className="font-bold text-gray-900">
+                Username: <span className="font-normal">{user.username}</span>
+              </p>
+              <p className="font-bold text-gray-900">
+                Email: <span className="font-normal">{user.email}</span>
+              </p>
+              <p className="font-bold text-gray-900">
+                Password:{" "}
+                <span className="font-normal">
+                  {showPassword
+                    ? user.password
+                    : "*".repeat(user.password.length)}
+                </span>
+              </p>
+            </div>
             <button
-              type="button"
               onClick={togglePasswordVisibility}
-              className="text-blue-500 hover:underline focus:outline-none"
+              className="text-blue-500 hover:text-blue-700 transition-colors duration-200 ease-in-out"
             >
               {showPassword ? "Hide" : "Show"} Password
             </button>
-          </div>
-          {/* Center the sign-out button */}
-          <div className="flex justify-center mt-4">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
-              type="button"
-              onClick={handleSignOut}
-            >
-              Sign Out
-            </button>
+            <div className="pt-4 flex justify-center">
+              <button
+                onClick={handleSignOut}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              >
+                Sign Out
+              </button>
+            </div>
+            {error && <p className="text-red-500 text-center mt-4">{error}</p>}
           </div>
         </div>
       </div>

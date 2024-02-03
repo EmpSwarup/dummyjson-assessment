@@ -47,7 +47,7 @@ export const getCurrentUser = async () => {
       },
     });
     const userData = await response.json();
-    console.log("Fetched User Data:", userData);
+    // console.log("Fetched User Data:", userData);
     return userData;
   } catch (error) {
     console.error("Error fetching user details:", error);
@@ -66,9 +66,9 @@ export const isAuthenticated = () => {
 
   const currentTime = new Date().getTime();
 
-  console.log(
-    `Token: ${token}, Expiration: ${expirationTime}, Current Time: ${currentTime}`
-  );
+  // console.log(
+  //   `Token: ${token}, Expiration: ${expirationTime}, Current Time: ${currentTime}`
+  // );
 
   if (!token) {
     console.log("No token found");

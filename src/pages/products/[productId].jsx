@@ -48,6 +48,7 @@ const ProductDetailPage = () => {
               <h2 className="text-2xl font-bold text-gray-800 mb-2">
                 {product.title}
               </h2>
+
               <p className="text-gray-700 mb-4">{product.description}</p>
               <div className="mb-4">
                 <span className="rounded bg-yellow-300 px-2.5 py-0.5 text-xs font-semibold text-gray-700">
@@ -57,7 +58,7 @@ const ProductDetailPage = () => {
               <div className="mb-4">
                 <span className="font-bold text-gray-800">Category:</span>
                 <Link href={`/categories/${product.category}`}>
-                  <span className="text-gray-700 ml-2">
+                  <span className="text-gray-70 bg-green-400 p-1 rounded-lg ml-2">
                     {capitalizeFirstLetter(product.category)}
                   </span>
                 </Link>
@@ -83,10 +84,10 @@ const ProductDetailPage = () => {
                     <span className="font-bold text-gray-500 line-through ml-2">
                       ${product.price}
                     </span>
-                    <span className="text-sm text-gray-500 ml-2">
-                      {product.discountPercentage} % OFF!!
-                    </span>
                   </p>
+                  <span className="text-sm text-gray-500">
+                    {product.discountPercentage} % OFF!!
+                  </span>
                 </div>
               </div>
             </div>

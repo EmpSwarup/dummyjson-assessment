@@ -25,15 +25,18 @@ const ProductCard = ({ product }) => {
           </Link>
         </h5>
         <div className="mt-2 mb-5 flex items-center justify-between">
-          <span className="text-3xl font-bold text-slate-900">
-            $
-            {Math.round(
-              product.price - (product.price * product.discountPercentage) / 100
-            )}
-          </span>
-          <span className="text-sm text-slate-900 line-through">
-            ${product.price}
-          </span>
+          <div>
+            <span className="text-3xl font-bold text-slate-900">
+              $
+              {Math.round(
+                product.price -
+                  (product.price * product.discountPercentage) / 100
+              )}
+            </span>
+            <span className="text-sm text-slate-900 line-through pl-1">
+              ${product.price}
+            </span>
+          </div>
           <span className="ml-3 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">
             Rating: {product.rating}/5
           </span>
