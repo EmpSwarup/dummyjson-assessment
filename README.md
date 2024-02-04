@@ -12,7 +12,7 @@ Assessment project using dummyJSON for Grepsr
 
 ## Getting Started
 
-### 1. First
+### 1. Setup
 
 Use the deployed version [here](https://dummyjson-assessment.vercel.app/) or https://dummyjson-assessment.vercel.app/
 
