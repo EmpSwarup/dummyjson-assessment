@@ -6,7 +6,11 @@ const Footer = () => {
       <div className="text-center">
         <p>
           Made By -
-          <a className="font-semibold" href="https://www.swarupsapkota.com.np/">
+          <a
+            className="font-semibold"
+            href="https://www.swarupsapkota.com.np/"
+            target="_blank"
+          >
             {" "}
             Swarup Sapkota
           </a>
