@@ -70,10 +70,10 @@ const User = () => {
               <img
                 src={user.image}
                 alt="User Avatar"
-                className="mx-auto h-24 w-24 rounded-full object-cover"
+                className="mx-auto h-24 w-24 rounded-full border-4 border-blue-500 object-cover"
               />
             )}
-            <div className="text-sm">
+            <div className="text-md">
               <p className="font-bold text-gray-900 mx-2">
                 Username: <span className="font-normal">{user.username}</span>
               </p>
