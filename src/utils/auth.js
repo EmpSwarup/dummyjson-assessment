@@ -8,8 +8,7 @@ export const loginUser = async (username, password) => {
     });
     const data = await response.json();
     if (data.token) {
-      // Store the token and expiration time in local storage or context for later use
-      const expirationTime = new Date(data.expiredAt).getTime(); // Convert to milliseconds
+      const expirationTime = new Date(data.expiredAt).getTime();
       localStorage.setItem("authToken", data.token);
       localStorage.setItem("authTokenExpiration", expirationTime);
       return data;
@@ -27,14 +26,11 @@ export const getCurrentUser = async () => {
   const expirationTime = localStorage.getItem("authTokenExpiration");
 
   if (!token || !expirationTime) {
-    // Token or expiration time is not available, handle accordingly
     throw new Error("No authentication token available");
   }
 
-  // Check if the token has expired based on the stored expiration time
   const currentTimestamp = new Date().getTime();
   if (currentTimestamp > expirationTime) {
-    // Token has expired, handle accordingly (e.g., log out the user)
     throw new Error("Token Expired!");
   }
 
@@ -57,7 +53,6 @@ export const getCurrentUser = async () => {
 
 export const isAuthenticated = () => {
   if (typeof window === "undefined") {
-    // Server-side rendering, return false or handle accordingly
     return false;
   }
 
@@ -86,7 +81,6 @@ export const isAuthenticated = () => {
 
 export const logoutUser = () => {
   try {
-    // Clear the authentication token and related data from localStorage
     localStorage.removeItem("authToken");
     localStorage.removeItem("authTokenExpiration");
     console.log("User successfully signed out");

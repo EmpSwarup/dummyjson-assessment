@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Loader from "./loader/Loader";
 import { FaUserCircle } from "react-icons/fa";
 import { IoHomeSharp } from "react-icons/io5";
-import { isAuthenticated } from "@/utils/auth"; // Adjust the import path as necessary
+import { isAuthenticated } from "@/utils/auth";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,7 +25,6 @@ const Navbar = () => {
   }, []);
 
   if (loading) {
-    // Return a loading state or spinner here if needed
     return (
       <div>
         <Loader />
@@ -44,12 +43,10 @@ const Navbar = () => {
         {isLoggedIn ? (
           <Link href="/user">
             <FaUserCircle className="text-3xl px-0" />{" "}
-            {/* Adjust the size as needed */}
           </Link>
         ) : (
           <Link href="/login">
             <FaUserCircle className="text-3xl px-0" />{" "}
-            {/* Adjust the size as needed */}
           </Link>
         )}
       </div>

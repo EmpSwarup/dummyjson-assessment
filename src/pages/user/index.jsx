@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getCurrentUser, logoutUser } from "../../utils/auth";
 import { useRouter } from "next/router";
-import Loader from "@/components/loader/Loader"; // Ensure correct path
+import Loader from "@/components/loader/Loader";
 import Head from "next/head";
 
 const User = () => {
@@ -17,7 +17,6 @@ const User = () => {
       try {
         const userData = await getCurrentUser();
         if (!userData) {
-          // Redirect to login if user data is not retrieved
           router.push("/login");
         } else {
           setUser(userData);
@@ -26,7 +25,6 @@ const User = () => {
       } catch (err) {
         console.error(err);
         setError("Failed to fetch user details");
-        // Potentially redirect to a login or error page here
       } finally {
         setLoading(false);
       }
@@ -57,7 +55,6 @@ const User = () => {
     return <div className="text-center">Error: {error}</div>;
   }
 
-  // User data check and rendering user details
   return (
     <>
       <Head>

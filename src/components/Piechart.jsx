@@ -3,9 +3,9 @@ import Chart from "chart.js/auto";
 
 const formatLabelName = (name) => {
   return name
-    .split("-") // Split the name by dashes
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
-    .join(" "); // Rejoin the words with spaces
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 };
 
 const PieChart = ({ data }) => {

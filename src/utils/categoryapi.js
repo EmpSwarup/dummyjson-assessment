@@ -36,7 +36,6 @@ export const getProductsByCategory = async (category) => {
 export const getCategoryDistributionData = async () => {
   console.log("Fetching category distribution data");
   try {
-    // Fetch all products to calculate category distribution with no limit
     const response = await fetch("https://dummyjson.com/products?limit=0");
     if (!response.ok) {
       throw new Error("Network response was not ok");

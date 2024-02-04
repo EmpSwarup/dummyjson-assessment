@@ -1,5 +1,3 @@
-// src/pages/index.jsx
-
 import React from "react";
 import Homecard from "@/components/cards/Homecard";
 import Head from "next/head";

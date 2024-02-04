@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 
 const Homecard = ({ hometitle }) => {
-  // Define the URLs for each category
   const categoryURLs = {
     Products: "/products",
     Categories: "/categories",
