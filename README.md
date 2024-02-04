@@ -1,26 +1,57 @@
-# dummyJSON project
+# Project Overview
 
-Assessment project using dummyJSON for Grepsr
+In this project, I harnessed the capabilities of Next.js and seamlessly integrated the dummyJSON API (https://dummyjson.com/docs) to craft a dynamic web application that excels in the following functionalities:
+
+### User Authentication
+
+- Implemented a robust login system within the application.
+- Successfully retrieved and prominently displayed the user's email from the login response.
+
+### Product Listing
+
+- Developed a comprehensive product listing feature, showcasing all available products.
+- Implemented a user-friendly pagination mechanism, allowing seamless navigation through the list of products.
+
+### Product Details
+
+- Implemented an intuitive feature enabling users to access detailed information about a specific product.
+- Ensured that the product details are presented in a clear and user-friendly manner.
+
+### Product Categories
+
+- Established a seamless interface for users to explore and discover all available product categories.
+- Implemented a streamlined process for users to view products within a selected category, enhancing the overall user journey.
+
+### Category Distribution Chart
+
+- Leveraged the power of Chart.js to integrate an insightful pie chart.
+- Visualized the distribution of products across different categories, providing users with a quick and engaging overview.
+
+These functionalities collectively contribute to a well-rounded and user-centric web application, where users can seamlessly navigate, explore products, and gain valuable insights into product distribution.
+
+Feel free to explore the application and experience these features firsthand!
 
 ## Tech Used
 
-- NextJS as the Javascript Framework
-- Tailwind CSS for styling
-- dummyJSON API for the data
-- ChartJS for Pie chart
-- React Icons for the icons
+- Framework: Next.js
+- Styling: Tailwind CSS
+- Data Source: dummyJSON API
+- Charting Library: Chart.js
+- Icons: React Icons
 
 ## Getting Started
 
-### 1. Setup
+### Option 1: Use the Deployed Version
 
-Use the deployed version [here](https://dummyjson-assessment.vercel.app/) or https://dummyjson-assessment.vercel.app/
+Access the deployed application here: https://dummyjson-assessment.vercel.app/
 
-------------OR------------
+### Option 2: Run Locally
 
-Download or clone the project to your system.
+#### Setup
 
-Install necessary dependencies:
+Clone the project repository or download the source code to your local machine.
+
+Install the required dependencies by running:
 
 ```bash
 npm install
@@ -30,7 +61,7 @@ yarn install
 bun install
 ```
 
-Run the development server:
+Start the development server:
 
 ```bash
 npm run dev
@@ -42,18 +73,14 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### 2. Login
+#### Login Instructions
 
-- When you start the application, you will be directed to the login page.
+- Upon launching the application, you will be directed to the login page.
+- Refer to the dummyJSON documentation for valid login credentials: https://dummyjson.com/users.
+- Example credentials: Username: atuny0 Password: 9uQFF1Lh
 
-- Use login credentials from this [documentation](https://dummyjson.com/users) or as https://dummyjson.com/users
+#### Navigating the Application
 
-- One of the valid login credentials will be username: atuny0 and password: 9uQFF1Lh
+- Successful login redirects you to the homepage, where links to the products, categories, and pie chart pages are available.
 
-### 3. Using the application
-
-- After successful login, you will be redirected to home page.
-
-- Here you can find the redirections for products page, categories page and the pie chart page.
-
-- The icons on the top right of the page will redirect to the profile page from which you can logout from the application.
+- Utilize the icons at the top right corner for profile access and logout functionality.
